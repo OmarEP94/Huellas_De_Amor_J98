@@ -64,7 +64,7 @@ public class HomeController {
 	
 	
 	@GetMapping("/crear")
-	public String Adopcion (Model model) {
+	public String Crear (Model model) {
 		Registro registro =  new Registro();
 		
 		model.addAttribute("TituloPagina", titlePage);
@@ -97,7 +97,7 @@ public class HomeController {
 		Response<Registro> rspta = InterfaceRegistro1.eliminarRegistro(idRegsitro);
 		
 		if (rspta.getEstado()) {			
-			return "redirect:/app/Adopcion";	
+			return "redirect:/app/adminpage";	
 		}else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -110,12 +110,12 @@ public class HomeController {
 	public String creaRegistro(@Valid Registro Luffy, BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {						
-			return "Home";
+			return "Adopcion";
 		}		
 		Response<Registro> rspta = InterfaceRegistro1.crearRegistro(Luffy);
 		
 		if (rspta.getEstado()) {			
-			return "redirect:/app/errores";	
+			return "redirect:/app/home";	
 		}else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -133,6 +133,13 @@ public class HomeController {
 		return "proximamente";
 	}
 	
+	@GetMapping({ "/adopcion" })
+	public String Adopcion (Model model) {
+		model.addAttribute("TituloPagina", "Inicia Sesión");
+		model.addAttribute("titulo", "Iniciar Sesión");
+
+		return "Adopcion";
+	}	
 		
 	@GetMapping({ "/login" })
 	public String Login (Model model) {
@@ -157,6 +164,18 @@ public class HomeController {
 
 		return "Contacto";
 	}
+	
+	@GetMapping({ "/nosotros", })
+	public String Nosotros(Model model) {
+
+		model.addAttribute("TituloPagina", "HUELLAS DE AMOR | SOBRE NOSOTROS ");
+		model.addAttribute("titulo", "HUELLAS DE AMOR");
+		model.addAttribute("TituloSN", "Se muestran a todos los integrantes del Grupo 03");
+
+		return "SobreNosotros";
+	}
+	
+	
 	
 
 }
