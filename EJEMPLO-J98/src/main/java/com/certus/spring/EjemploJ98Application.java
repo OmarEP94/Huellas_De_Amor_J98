@@ -1,4 +1,4 @@
-package com.certus.spring01;
+package com.certus.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
