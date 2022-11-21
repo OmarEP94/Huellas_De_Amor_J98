@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="/layout :: head"></head>
+
+<body>
+
+    <header th:replace="/layout :: header"></header>
+    <div th:replace="/layout :: divisor"></div>
+    <div class="p-5">
+        <h1 class="" style="text-align: center;">Formulario de Registro</h1>
+        <div class="p-5">
+            <div class="container">
+                <form th:action="@{/app/formreg}" th:object="${registro}" class="row g-4" method="post"
+                    enctype="multipart/form-data">
+                    <h4>Complete el formulario de adopción:</h4>
+                    <div class="col-12">
+                        <label for="nomape" class="form-label">Nombres y apellidos</label>
+                        <input name="nomape" type="text" class="form-control" id="nomape"
+                            placeholder="Ingrese el nombre de la mascota." th:field="*{nomape}" />
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomape')}"  th:errors="*{nomape}" ></div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dni" class="form-label">DNI:</label> <input type="number" class="form-control" id="dni"
+                            placeholder="Ingrese su numero de DNI." th:field="*{dni}"/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dni')}"  th:errors="*{dni}" ></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="edad" class="form-label">Edad:</label> <input type="number" class="form-control" id="edad"
+                            placeholder="Ingrese la edad de la mascota." th:field="*{edad}"/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('edad')}"  th:errors="*{edad}" ></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha" class="form-label">Fecha de
+                            Nacimiento</label> <input type="date" class="form-control" id="fecha"  th:field="*{fecha}"/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('fecha')}"  th:errors="*{fecha}" ></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tipo" class="form-label">Tipo</label> <input type="text" class="form-control" id="tipo"
+                            placeholder="Ingrese el tipo de mascota" th:field="*{tipo}"/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('tipo')}"  th:errors="*{tipo}" ></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="raza" class="form-label">Raza:</label> <input type="text" class="form-control" id="raza" placeholder="Ingrese la raza de la mascota" th:field="*{raza}"/>
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('raza')}"  th:errors="*{raza}" ></div>
+                    </div>
+                    <div class="col-12">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcion"
+                            placeholder="Ingrese la descripcion"  th:field="*{descripcion}"/>
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('descripcion')}"  th:errors="*{descripcion}" ></div>
+                    </div>
+                    <div class="col-md-12" th:field="*{estado}">
+                        <label for="estado" class="form-label">Estado:</label> <select   id="estado"
+                            class="form-select">
+                            <option selected="">Seleccione una opción.</option>
+                            <option>Apto</option>
+                            <option>No Apto</option>
+                        </select>                    
+                    </div>
+                    <div class="col-6 d-grid gap-2 mx-auto">
+                        <button type="submit" class="btn center"
+                            style="background-color: rgb(207, 100, 127); color: white; font-weight: bolder;">
+                            Enviar registro de Adopción</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div th:replace="/layout :: divisor"></div>
+    <footer th:replace="/layout :: footer"></footer>
+</body>
+
+</html>

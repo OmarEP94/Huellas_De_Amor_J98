@@ -380,113 +380,30 @@
 					<!-- End -->
 
 					<div th:fragment="galeriabd" class="row" style="">
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+						<div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="mascota : ${listita}">
 							<div class="bg-white rounded shadow-sm">
-								<img src="https://ichef.bbci.co.uk/news/640/amz/worldservice/live/assets/images/2015/06/12/150612173542_mascota_promo_624x351_thinkstock.jpg"
-									alt="" class="img-fluid card-img-top rounded">
-								<div class="p-4">
-									<h5>
-										<a href="#" class="text-dark"
-											style="font-family: 'Roboto', sans-serif; font-weight: bolder">Pets 01</a>
-									</h5>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center">
-										Descripción:
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-									<br>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px;">
-										<span>Perro</span> <span>de raza </span> <span>Chatin</span>
-									</p>
-									<div style="background: radial-gradient(circle, rgba(237, 109, 141, 0.657) 44%, rgb(250, 176, 194) 72%);"
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-										<p class="small mb-0"
-											style="margin: auto; color: aliceblue; font-weight: bolder;">ESTADO</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-							<div class="bg-white rounded shadow-sm">
-								<img src="http://mascotas.net/wp-content/uploads/2018/06/animals-2198994_640.jpg" alt=""
-									class="img-fluid card-img-top rounded">
-								<div class="p-4">
-									<h5>
-										<a href="#" class="text-dark"
-											style="font-family: 'Roboto', sans-serif; font-weight: bolder">Pets 02</a>
-									</h5>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center">
-										Descripción:
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-									<br>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px;">
-										<span>Perro</span> <span>de raza </span> <span>Chatin</span>
-									</p>
-									<div style="background: radial-gradient(circle, rgba(237, 109, 141, 0.657) 44%, rgb(250, 176, 194) 72%);"
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-										<p class="small mb-0"
-											style="margin: auto; color: aliceblue; font-weight: bolder;">ESTADO</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-							<div class="bg-white rounded shadow-sm">
-								<img src="https://holachina.lat/wp-content/uploads/2015/05/zz04-e1432006994398.jpg"
-									alt="" class="img-fluid card-img-top rounded">
-								<div class="p-4">
-									<h5>
-										<a href="#" class="text-dark"
-											style="font-family: 'Roboto', sans-serif; font-weight: bolder">Pets 03</a>
-									</h5>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center">
-										Descripción:
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-									<br>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px;">
-										<span>Perro</span> <span>de raza </span> <span>Chatin</span>
-									</p>
-									<div style="background: radial-gradient(circle, rgba(237, 109, 141, 0.657) 44%, rgb(250, 176, 194) 72%);"
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-										<p class="small mb-0"
-											style="margin: auto; color: aliceblue; font-weight: bolder;">ESTADO</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-							<div class="bg-white rounded shadow-sm">
-								<img src="https://media.informabtl.com/wp-content/uploads/2020/06/cf6c1715-bigstock-adorable-puppy-jack-russell-te-345072565-768x512.jpg"
-									alt="" class="img-fluid card-img-top rounded">
-								<div class="p-4">
-									<h5>
-										<a href="#" class="text-dark"
-											style="font-family: 'Roboto', sans-serif; font-weight: bolder">Pets 04</a>
-									</h5>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center">
-										Descripción:
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-									<br>
-									<p class="small text-muted mb-0"
-										style="font-family: 'Roboto', sans-serif; font-size: 14px;">
-										<span>Perro</span> <span>de raza </span> <span>Chatin</span>
-									</p>
-									<div style="background: radial-gradient(circle, rgba(237, 109, 141, 0.657) 44%, rgb(250, 176, 194) 72%);"
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-										<p class="small mb-0"
-											style="margin: auto; color: aliceblue; font-weight: bolder;">ESTADO</p>
+								<div class="bg-white rounded shadow-sm">
+									<img th:src="@{/UploadsImg/}+${mascota.uriImagen}" class="img-responsive rounded"
+										th:alt="${mascota.uriImagen}" style="width: 100%">
+									<div class="p-4">
+										<h5 class="card-title" th:text="${mascota.nombrepets}"></h5>
+										<p class="small text-muted mb-0"
+											style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center"
+											th:text="${mascota.descripcion}">
+										</p>
+										<br>
+										<p class="small text-muted mb-0"
+											style="font-family: 'Roboto', sans-serif; font-size: 14px;"
+											th:text="${mascota.raza}">
+
+										</p>
+										<div style="background: radial-gradient(circle, rgba(238, 155, 176, 0.657) 44%, rgb(250, 176, 194) 72%);"
+											class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+											<p class="small mb-0"
+												style="margin: auto; color: rgb(33, 9, 14); font-weight: bolder; font-size: 25px; "
+												th:text="${mascota.estado}"></p>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -518,7 +435,11 @@
 						<a class="text-dark" style="text-decoration: none" href=""><strong>VER REGISTRO DE ADOPCION
 							</strong></a>
 						<span> | </span>
-						<a class="text-dark" style="text-decoration: none" href=""><strong>AGREGAR MASCOTAS A LA
+						<a class="text-dark" style="text-decoration: none" th:href="@{/app/listar}"><strong>VER MASCOTAS
+								BD</strong></a>
+						<span> | </span>
+						<a class="text-dark" style="text-decoration: none" th:href="@{/app/crear}"><strong>AGREGAR
+								MASCOTAS A LA
 								BD</strong></a>
 					</p>
 				</div>

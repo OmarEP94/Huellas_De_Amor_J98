@@ -6,98 +6,108 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "mascota")
 public class Mascota {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idMascota;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idMascota;
 
-    @NotEmpty(message = "Agrege el nombre de las nascotita")
-    private String nomPets;
+	@NotEmpty(message = "Completar el nombre del mascota")
+	private String nombrepets;
 
-    @NotEmpty(message = "Ingresa la raza de la mascota")
-    private String raza;
+	// @Size(min = 5, message = "El alias debe contener al menos 5 caracteres")
+	@NotEmpty(message = "Ingrese la edad de la mascota")
+	private String edad;
 
-    @NotEmpty(message = "Ingresa el tipo de mascota")
-    private String tipo;
+	private String fecha;
 
-    @NotEmpty(message = "Ingreso la fecha de ingreso a nuestro sistema")
-    private String fecha;
+	@NotEmpty(message = "Ingrese la raza")
+	private String raza;
 
-    @NotEmpty(message = "Ingreso de descripción")
-    private String descripcion;
+	@NotEmpty(message = "Ingrese la tipo de mascota (Perro, Gato, Etc.)")
+	private String tipo;
 
-    @NotEmpty(message = "Seleccione si esta apto o no apto")
-    private String apto;
+	@NotEmpty(message = "Ingrese la descripción de la mascota")
+	private String descripcion;
 
-    @NotEmpty(message = "Ingrese la imagen")
-    private String imagen;
+	private String estado;
 
-    public int getIdMascota() {
-        return idMascota;
-    }
+	private String uriImagen;
 
-    public void setIdMascota(int idMascota) {
-        this.idMascota = idMascota;
-    }
+	public int getIdMascota() {
+		return idMascota;
+	}
 
-    public String getNomPets() {
-        return nomPets;
-    }
+	public void setIdMascota(int idMascota) {
+		this.idMascota = idMascota;
+	}
 
-    public void setNomPets(String nomPets) {
-        this.nomPets = nomPets;
-    }
+	public String getNombrepets() {
+		return nombrepets;
+	}
 
-    public String getRaza() {
-        return raza;
-    }
+	public void setNombrepets(String nombrepets) {
+		this.nombrepets = nombrepets;
+	}
 
-    public void setRaza(String raza) {
-        this.raza = raza;
-    }
+	public String getEdad() {
+		return edad;
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
+	public void setEdad(String edad) {
+		this.edad = edad;
+	}
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public String getRaza() {
+		return raza;
+	}
 
-    public String getFecha() {
-        return fecha;
-    }
+	public void setRaza(String raza) {
+		this.raza = raza;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	public String getTipo() {
+		return tipo;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public String getApto() {
-        return apto;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public void setApto(String apto) {
-        this.apto = apto;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public String getImagen() {
-        return imagen;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
+	public String getUriImagen() {
+		return uriImagen;
+	}
+
+	public void setUriImagen(String uriImagen) {
+		this.uriImagen = uriImagen;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 
 }

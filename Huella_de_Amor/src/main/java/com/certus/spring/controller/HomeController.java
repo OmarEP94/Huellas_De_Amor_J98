@@ -12,13 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.certus.spring.models.Registro;
+import com.certus.spring.models.Mascota;
 import com.certus.spring.models.Response;
-import com.certus.spring.service.IRegistroService;
+import com.certus.spring.service.IMascotaService;
 
+/*
+import com.certus.spring.models.Registro;
+import com.certus.spring.service.IRegistroService;
+*/
 @Controller
 @RequestMapping("/app")
+@SessionAttributes({ "mascota", "registro" })
 public class HomeController {
 
 	@Value("${title.generic}")
@@ -29,29 +38,43 @@ public class HomeController {
 
 	@Autowired
 	@Qualifier("servicio1")
-	private IRegistroService InterfaceRegistro1;
+	private IMascotaService InterfaceMascota1;
 
 	@GetMapping({ "/home", "/inicio", "/", "/Home", "/Inicio" })
+
+	// model.addAttribute("TituloPagina", titlePage);
+	// model.addAttribute("titulo", "Sección J98");
+	// model.addAttribute("Mensaje", mensaje);
+
 	public String Home(Model model) {
-		model.addAttribute("TituloPagina", titlePage);
-		model.addAttribute("titulo", "Sección J98");
-		model.addAttribute("Mensaje", mensaje);
-
-		return "Home";
-
-	}
-
-	@GetMapping("/listar")
-	public String listarRegistros(Model model) {
 
 		model.addAttribute("TituloPagina", titlePage);
 		model.addAttribute("titulo", "Sección J98");
-		Response<Registro> rspta = InterfaceRegistro1.listarRegistro();
+		Response<Mascota> rspta = InterfaceMascota1.listarMascota();
 
 		if (rspta.getEstado()) {
 			model.addAttribute("Mensaje", rspta.getMensaje());
 			model.addAttribute("listita", rspta.getListData());
-			return "Adminpage";
+			return "home";
+		} else {
+			model.addAttribute("mensaje", rspta.getMensaje());
+			model.addAttribute("mensajeError", rspta.getMensajeError());
+			return "errores";
+		}
+
+	}
+
+	@GetMapping({ "/listar" })
+	public String ListarMascotas(Model model) {
+
+		model.addAttribute("TituloPagina", titlePage);
+		model.addAttribute("titulo", "Sección J98");
+		Response<Mascota> rspta = InterfaceMascota1.listarMascota();
+
+		if (rspta.getEstado()) {
+			model.addAttribute("Mensaje", rspta.getMensaje());
+			model.addAttribute("listita", rspta.getListData());
+			return "Listapets";
 		} else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -60,37 +83,37 @@ public class HomeController {
 	}
 
 	@GetMapping("/crear")
-	public String crearRegistro(Model model) {
-		Registro registro = new Registro();
+	public String CrearMascota(Model model) {
+		Mascota mascota = new Mascota();
 
 		model.addAttribute("TituloPagina", titlePage);
-		model.addAttribute("titulo", "");
-		model.addAttribute("registro", registro);
+		model.addAttribute("titulo", "Sección J98 - Crear Mascota");
+		model.addAttribute("mascota", mascota);
 
-		return "Adopcion";
+		return "Formpets";
 	}
 
-	@GetMapping("/Editar/{idRegistro}")
-	public String editarRegistro(@PathVariable int idRegistro, Model model) {
+	@GetMapping("/Editar/{idMascota}")
+	public String EditarMascota(@PathVariable int idMascota, Model model) {
 
 		model.addAttribute("TituloPagina", titlePage);
 
-		Response<Registro> rspta = InterfaceRegistro1.editarRegistro(idRegistro);
+		Response<Mascota> rspta = InterfaceMascota1.editarMascota(idMascota);
 
-		model.addAttribute("titulo", "Sección J98 - Editando el Regsitro");
+		model.addAttribute("titulo", "Sección J98 - Editando el mascota");
 
-		model.addAttribute("registro", rspta.getData());
+		model.addAttribute("mascota", rspta.getData());
 
-		return "Adminpage";
+		return "Formpets";
 	}
 
-	@GetMapping("/Editar/{idRegsitro}")
-	public String elimnarRegistro(@PathVariable int idRegsitro, Model model) {
+	@GetMapping("/Elimnar/{idMascota}")
+	public String ElimnarMascota(@PathVariable int idMascota, Model model) {
 
-		Response<Registro> rspta = InterfaceRegistro1.eliminarRegistro(idRegsitro);
+		Response<Mascota> rspta = InterfaceMascota1.eliminarMascota(idMascota);
 
 		if (rspta.getEstado()) {
-			return "redirect:/app/adminpage";
+			return "redirect:/app/listar";
 		} else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -100,15 +123,20 @@ public class HomeController {
 	}
 
 	@PostMapping("/form")
-	public String creaRegistro(@Valid Registro Luffy, BindingResult result, Model model) {
+	public String creaMascota(@Valid Mascota Luffy, BindingResult result, Model model,
+			@RequestParam("ImagenDelFormulario") MultipartFile fileRecibido, SessionStatus sStatus) {
 
 		if (result.hasErrors()) {
-			return "Adopcion";
+			return "Formpets";
 		}
-		Response<Registro> rspta = InterfaceRegistro1.crearRegistro(Luffy);
+
+		Response<Mascota> rspta = InterfaceMascota1.crearMascota(Luffy, fileRecibido);
 
 		if (rspta.getEstado()) {
-			return "redirect:/app/home";
+
+			sStatus.setComplete();
+			return "redirect:/app/listar";
+
 		} else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -128,10 +156,19 @@ public class HomeController {
 
 	@GetMapping({ "/adopcion" })
 	public String Adopcion(Model model) {
-		model.addAttribute("TituloPagina", "Inicia Sesión");
-		model.addAttribute("titulo", "Iniciar Sesión");
+		model.addAttribute("TituloPagina", titlePage);
+		model.addAttribute("titulo", "Sección J98");
+		Response<Mascota> rspta = InterfaceMascota1.listarMascota();
 
-		return "Adopcion";
+		if (rspta.getEstado()) {
+			model.addAttribute("Mensaje", rspta.getMensaje());
+			model.addAttribute("listita", rspta.getListData());
+			return "adopcion";
+		} else {
+			model.addAttribute("mensaje", rspta.getMensaje());
+			model.addAttribute("mensajeError", rspta.getMensajeError());
+			return "errores";
+		}
 	}
 
 	@GetMapping({ "/login" })
@@ -167,5 +204,69 @@ public class HomeController {
 
 		return "SobreNosotros";
 	}
+	/*
+	 * // FORMULARIO DE REGISTRAR
+	 * 
+	 * @Autowired
+	 * 
+	 * @Qualifier("servicio1")
+	 * private IRegistroService InterfaceRegistro1;
+	 * 
+	 * @GetMapping("/crearreg")
+	 * public String Formulario(Model model) {
+	 * Registro registro = new Registro();
+	 * 
+	 * model.addAttribute("TituloPagina", titlePage);
+	 * model.addAttribute("titulo", "Sección J98 - Crear Registro");
+	 * model.addAttribute("registro", registro);
+	 * 
+	 * return "Formregistro";
+	 * }
+	 * 
+	 * @PostMapping("/formreg")
+	 * public String creaRegistro(@Valid Registro Luffy, BindingResult result, Model
+	 * model,
+	 * 
+	 * @RequestParam("ImagenDelFormulario") MultipartFile fileRecibido,
+	 * SessionStatus sStatus) {
+	 * 
+	 * if (result.hasErrors()) {
+	 * return "Formregistro";
+	 * }
+	 * 
+	 * Response<Registro> rspta = InterfaceRegistro1.crearRegistro(Luffy,
+	 * fileRecibido);
+	 * 
+	 * if (rspta.getEstado()) {
+	 * 
+	 * sStatus.setComplete();
+	 * return "redirect:/app/listarreg";
+	 * 
+	 * } else {
+	 * model.addAttribute("mensaje", rspta.getMensaje());
+	 * model.addAttribute("mensajeError", rspta.getMensajeError());
+	 * return "errores";
+	 * }
+	 * 
+	 * }
+	 * 
+	 * @GetMapping({ "/listarreg" })
+	 * public String ListarRegistro(Model model) {
+	 * 
+	 * model.addAttribute("TituloPagina", titlePage);
+	 * model.addAttribute("titulo", "Sección J98");
+	 * Response<Registro> rspta = InterfaceRegistro1.listarRegistro();
+	 * 
+	 * if (rspta.getEstado()) {
+	 * model.addAttribute("Mensaje", rspta.getMensaje());
+	 * model.addAttribute("listita", rspta.getListData());
+	 * return "ListaReg";
+	 * } else {
+	 * model.addAttribute("mensaje", rspta.getMensaje());
+	 * model.addAttribute("mensajeError", rspta.getMensajeError());
+	 * return "errores";
+	 * }
+	 * }
+	 */
 
 }

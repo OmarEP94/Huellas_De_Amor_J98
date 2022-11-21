@@ -12,8 +12,8 @@
 			<div class="px-lg-5">
 
 				<!-- For demo purpose -->
-				<div class="row py-5">
-					<div class="col-lg-12 mx-auto">
+				<div class="col-lg-12">
+					<div class="col-lg-12 mx-auto p-5">
 						<div class="text-dark p-5 shadow-sm rounded banner"
 							style="text-align: center; background: radial-gradient(circle, rgba(238, 195, 205, 0.996) 44%, rgb(218, 164, 178) 72%);">
 							<h1 class="display-4"><strong>Zona de adopción</strong></h1>
@@ -98,73 +98,11 @@
 						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
 							data-bs-parent="#accordionExample">
 							<div class="accordion-body container">
-								<div class="container">
-									<form th:action="@{/app/form}" th:object="${reg_adopcion}" class="row g-4">
-										<h4>Complete el formulario de adopción:</h4>
-										<div class="col-12">
-											<label for="inputNonApe" class="form-label">Nombres y
-												Apellidos:</label> <input name="NomApe" type="text" class="form-control"
-												id="inputNonApe"
-												placeholder="Ingrese sus nombres y apellidos completos." />
-
-										</div>
-										<div class="col-md-6">
-											<label for="inputEmail4" class="form-label">Número de
-												DNI:</label> <input type="number" class="form-control" id="inputEmail4"
-												placeholder="Ingrese su Nº de DNI" />
-										</div>
-										<div class="col-md-6">
-											<label for="inputDate" class="form-label">Fecha de
-												Nacimiento</label> <input type="date" class="form-control"
-												id="inputPassword4" />
-										</div>
-										<div class="col-12">
-											<label for="inputAddress" class="form-label">Dirección</label>
-											<input type="text" class="form-control" id="inputAddress"
-												placeholder="Ingrese su dirección actual" />
-										</div>
-										<div class="col-md-6">
-											<label for="inputState" class="form-label">Distrito:</label>
-											<select id="inputState" class="form-select">
-												<option selected="">Seleccione una opción.</option>
-												<option>Lima</option>
-												<option>Trujillo</option>
-												<option>Arequipa</option>
-											</select>
-										</div>
-
-										<div class="col-md-6">
-											<label for="inputState" class="form-label">Estado:</label> <select
-												id="inputState" class="form-select">
-												<option selected="">Seleccione una opción.</option>
-												<option>Apto</option>
-												<option>No Apto</option>
-											</select>
-										</div>
-										<div class="col-12">
-											<label for="inputtrabajo" class="form-label">Trabajo
-												actual</label> <input type="text" class="form-control" id="inputtrabajo"
-												placeholder="Por ejemplo: Administrador de una agencia" />
-										</div>
-										<div class="col-md-12">
-											<label for="inputZip" class="form-label">Nombre de la
-												mascota de su interes.</label> <input type="text" class="form-control"
-												id="inputZip"
-												placeholder="Ingrese el nombre de la mascota de su interes" />
-										</div>
-										<div class="col-12">
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox" id="gridCheck" /> <label
-													class="form-check-label" for="gridCheck"> Confirme los datos
-													ingresados </label>
-											</div>
-										</div>
-										<div class="col-6 d-grid gap-2 mx-auto">
-											<button type="submit" class="btn center"
-												style="background-color: rgb(207, 100, 127); color: white; font-weight: bolder;">
-												Enviar registro de Adopción</button>
-										</div>
-									</form>
+								<div class="col-4 d-grid gap-2 mx-auto">
+									<a type="submit" class="btn center"
+										style="background-color: rgb(207, 100, 127); color: white; font-weight: bolder;"
+										th:href="@{/app/crearreg}">
+										Ir al Formulario de Registro</a>
 								</div>
 							</div>
 						</div>
