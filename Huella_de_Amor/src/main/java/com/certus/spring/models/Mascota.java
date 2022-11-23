@@ -19,7 +19,7 @@ public class Mascota {
 	@NotEmpty(message = "Completar el nombre del mascota")
 	private String nombrepets;
 
-	// @Size(min = 5, message = "El alias debe contener al menos 5 caracteres")
+	@Size(min = 1, max = 3, message = "El alias debe tener 1 caracter y maximo de 3")
 	@NotEmpty(message = "Ingrese la edad de la mascota")
 	private String edad;
 
