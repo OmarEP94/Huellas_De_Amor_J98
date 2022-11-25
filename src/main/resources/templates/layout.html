@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:fragment="head">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title th:text="${TituloPagina}"></title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/bootstrap/css/style.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+	<link href="https://css.gg/css?=" rel="stylesheet">
+	<!-- Font de google -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script async>
+		(function (w, d) {
+			var h = d.head || d.getElementsByTagName("head")[0];
+			var s = d.createElement("script");
+			s.setAttribute("type", "text/javascript");
+			s
+				.setAttribute(
+					"src",
+					"https://app.bluecaribu.com/conversion/integration/b6c92aaca57a27b4edd21850d6362ebf");
+			h.appendChild(s);
+		})(window, document);
+	</script>
+
+</head>
+
+<body>
+
+	<!-- Inicio de la Barra de Nav -->
+	<header th:fragment="header" class="colornav">
+		<nav class="colornav navbar navbar-expand-lg"
+			style="background: radial-gradient(circle, rgb(237, 155, 175) 44%, rgba(219, 121, 145, 1) 72%)">
+			<div class="container">
+				<a th:href="@{/app/home}" class="navbar-brand fs-4 fw-bold text-white">HUELLAS DE AMOR</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+						<li class="nav-item"><a class="nav-link active text-white" aria-current="page"
+								th:href="@{/app/home}">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link text-white" th:href="@{/app/nosotros}">Sobre
+								Nosotros</a></li>
+						<li class="nav-item"><a class="nav-link text-white" th:href="@{/app/adopcion}">Zona de
+								adopción</a></li>
+						<li class="nav-item"><a class="nav-link text-white" th:href="@{/app/contacto}">Contacto</a></li>
+					</ul>
+					<form class="d-flex gap-2 col-4 mx-auto" role="search">
+						<input class="form-control me-4 bg-light bg-opacity-50" type="search" placeholder="Busque aquí"
+							aria-label="Search" />
+						<div class="d-grid gap-2 col-4 mx-auto">
+							<button class="btn text-white fw-bold bg-dark bg-opacity-50" type="submit">Buscar</button>
+						</div>
+					</form>
+					<div class="nav-item d-grid">
+						<li class="nav-item dropdown d-flex align-items-center" style="list-style: none;"><a
+								class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false"> <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512">
+									<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+									<path
+										d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+								</svg>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" th:href="@{/app/login}">Inicie
+										Sesión</a></li>
+
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+								<li><a class="dropdown-item" th:href="@{/app/registro}">Crear
+										Cuenta</a></li>
+
+							</ul>
+						</li>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Fin de la Barra de Nav -->
+
+	<!-- Inicio del divisor -->
+	<div th:fragment="divisor" class="mt-0 mb-0"
+		style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+	</div>
+	<!-- Fin del divisor -->
+
+
+	<!--Inicio Slider -->
+	<div th:fragment="slider">
+
+		<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" data-bs-interval="2500">
+					<img src="/bootstrap/img/Principal1.jpg" class="d-block w-100" alt="..." />
+					<div class="carousel-caption d-none d-md-block">
+						<h1 class="fs-1 text-white" style="text-shadow: 0 0 10px rgb(51, 16, 39)"
+							th:text="${TituloPagina}"></h1>
+						<p class="fs-3" style="text-shadow: 0 0 10px rgb(51, 16, 39)">No
+							seas complice del tráfico de animales...</p>
+					</div>
+				</div>
+				<div class="carousel-item active" data-bs-interval="2500">
+					<img src="/bootstrap/img/Principal2.jpg" class="d-block w-100" alt="..." />
+					<div class="carousel-caption d-none d-md-block">
+						<h1 class="fs-1 text-white" style="text-shadow: 0 0 10px rgb(51, 16, 39)"
+							th:text="${TituloPagina}"></h1>
+						<p class="fs-3" style="text-shadow: 0 0 10px rgb(51, 16, 39)">Regala
+							una esperanza, con su amor te agradecerán... Adopta!!!</p>
+					</div>
+				</div>
+				<div class="carousel-item active" data-bs-interval="2500">
+					<img src="/bootstrap/img/Principal3.jpg" class="d-block w-100" alt="..." />
+					<div class="carousel-caption d-none d-md-block">
+						<h1 class="fs-1 text-white" style="text-shadow: 0 0 10px rgb(51, 16, 39)"
+							th:text="${TituloPagina}"></h1>
+						<p class="fs-3" style="text-shadow: 0 0 10px rgb(51, 16, 39)">No
+							seas complice del tráfico de animales...</p>
+					</div>
+				</div>
+				<div class="carousel-item active" data-bs-interval="2500">
+					<img src="/bootstrap/img/Principal4.jpg" class="d-block w-100" alt="..." />
+					<div class="carousel-caption d-none d-md-block">
+						<h1 class="fs-1 text-white" style="text-shadow: 0 0 10px rgb(51, 16, 39)"
+							th:text="${TituloPagina}"></h1>
+						<p class="fs-3" style="text-shadow: 0 0 10px rgb(51, 16, 39)">No
+							seas complice del tráfico de animales...</p>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+				data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+				data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</div>
+	<!-- Fin de Slider -->
+
+	<!-- Inicio de nuestra historia -->
+	<div th:fragment="nuestrahistoria">
+		<!-- Inicio de Sobre Nosotros -->
+		<section>
+			<div class="m-0" style="background-color: #FFECEF;">
+				<small class="m-4 ml-0">
+					<div class="container" id="about">
+						<div class="row">
+							<div class="col-md-4" style="margin: auto;">
+								<img style="width: 100%; height: 80%;" class="img-fluid rounded"
+									src="/bootstrap/img/cavalier-king-charles-spaniel-5952324.jpg" alt="Honolulu" />
+							</div>
+							<div class="col-md-4" style="font-family: 'Roboto', sans-serif; margin: auto;">
+								<h2 class="mt-2 me-2" style="font-weight: bolder;">Nuestra
+									historia</h2>
+								<!-- Divisor -->
+								<div class="mt-2"
+									style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+								</div>
+								<!-- Fin del divisor -->
+								<p class="mt-2" style="font-size: 15px;">
+									Nosotros somos una compañía que surgió al ver una problemática
+									que afectaba nuestras vidas diarias y la de los demás en
+									nuestra localidad y esto era los animales callejeros... <br>
+									<code class="text-md-start">
+										<a style="text-decoration: none; color: rgb(142, 58, 78);"
+											th:href="@{/app/nosotros}">----Leer más----</a>
+									</code>
+								</p>
+
+							</div>
+						</div>
+					</div>
+			</div>
+		</section>
+		<section style="margin-top: -40px; margin-bottom: -60px">
+			<div class="my-4" style="background-color: rgb(255, 255, 255);">
+				<small class="m-4">
+					<div class="container" id="adopcion">
+						<div class="row">
+							<div class="col-md-4" style="font-family: 'Roboto', sans-serif; margin: auto;">
+								<h2 class="mt-2 me-2" style="font-weight: bolder;">Zona de
+									Adopción</h2>
+								<!-- Divisor -->
+								<div class="mt-2"
+									style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: auto">
+								</div>
+								<!-- Fin del divisor -->
+								<p class="my-4" style="font-size: 15px; margin-bottom: -50px">
+									Al adoptar, no solo iluminas la vida de un animal, además
+									ayudas a liberar espacio en un albergue, lo que permite
+									rescatar a más animales abandonados a su suerte... <br>
+									<code class="text-md-start">
+										<a style="text-decoration: none; color: rgb(142, 58, 78);"
+											th:href="@{/app/adopcion}">----Leer más----</a>
+									</code>
+								</p>
+
+							</div>
+							<div class="col-md-4" style="margin: auto;">
+								<img style="width: 100%; height: 80%;" class="img-responsive rounded"
+									src="/bootstrap/img/bulldog-1224267.jpg" alt="Honolulu" />
+							</div>
+						</div>
+					</div>
+			</div>
+		</section>
+		<!-- Fin de Sobre Nosotros -->
+	</div>
+	<!-- Fin de nuestra historia -->
+
+	<!-- Inicio de nuestra historia sobre nosotros -->
+	<div th:fragment="snosotros">
+		<div>
+			<!-- Inicio de Sobre Nosotros -->
+			<section>
+				<div class="" style="background-color: #FFECEF;">
+					<small class="m-4">
+						<div class="container" id="about">
+							<div class="row">
+								<div class="col-md-4" style="margin: auto;">
+									<img style="width: 100%; height: 80%;" class="img-fluid rounded"
+										src="/bootstrap/img/foto1.jpg" alt="Honolulu" />
+								</div>
+								<div class="col-md-4" style="font-family: 'Roboto', sans-serif; margin: auto;">
+									<h2 class="mt-2 me-2" style="font-weight: bolder;">Nuestra
+										historia</h2>
+									<!-- Divisor -->
+									<div class="mt-2"
+										style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+									</div>
+									<!-- Fin del divisor -->
+									<p class="mt-2" style="font-size: 13px; text-align: center;">
+										Nosotros somos una compañía que surgió al ver una problemática
+										que afectaba nuestras vidas diarias y la de los demás en
+										nuestra localidad y esto era los animales callejeros , siempre
+										hay alguien que acaba mordido o tiene que rodear la calle para
+										no acercarse a un animal callejero por miedo a ser atacado o
+										que su mascota sea ataca; por eso nuestra principal meta es
+										ayudar a estas criaturas en su precaria situación al hacer
+										acuerdos con veterinarias y reunir a estos animales para
+										brindarles una rehabilitación y dar un nuevo hogar en que
+										puedan tener una vida de calidad.</p>
+
+								</div>
+							</div>
+						</div>
+				</div>
+			</section>
+			<section style="">
+				<div class="" style="background-color: rgb(255, 255, 255);">
+					<small class="m-4">
+						<div class="container" id="adopcion">
+							<div class="row">
+								<div class="col-md-4 mt-n8" style="font-family: 'Roboto', sans-serif; margin: auto;">
+									<h2 class="" style="font-weight: bolder;">Misión</h2>
+									<!-- Divisor -->
+									<div class="mt-2"
+										style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+									</div>
+									<!-- Fin del divisor -->
+									<p class="mt-2" style="font-size: 13px; text-align: center;">
+										Queremos contribuir a crear un mundo mejor , ayudando a amar y
+										proteger a las mascotas.Basándonos en nuestro equipo de
+										trabajo solidario y cooperativo para ampliar nuestra
+										estructura y poder ayudar a más mascotas y del cuidado del
+										medio ambiente Que las mascotas encuentren un hogar próspero ,
+										feliz para ellos , además de concientizar a las personas sobre
+										los animalitos que están abandonados y cambiar la forma de
+										pensar no compremos , adoptemos.</p>
+
+								</div>
+								<div class="col-md-4 mx-auto">
+									<img style="width: 100%; height: auto;" class="img-responsive rounded"
+										src="/bootstrap/img/foto3.jpg" alt="Honolulu" />
+								</div>
+							</div>
+						</div>
+				</div>
+			</section>
+			<section style="">
+				<div class="m-0" style="background-color: #FFECEF;">
+					<small class="m-4 ml-0">
+						<div class="container" id="about">
+							<div class="row">
+								<div class="col-md-4" style="margin: auto;">
+									<img style="width: 100%; height: 80%;" class="img-fluid rounded"
+										src="/bootstrap/img/foto8.jpg" alt="Honolulu" />
+								</div>
+								<div class="col-md-4" style="font-family: 'Roboto', sans-serif; margin: auto;">
+									<h2 class="mt-2 me-2" style="font-weight: bolder;">Visión</h2>
+									<!-- Divisor -->
+									<div class="mt-2"
+										style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+									</div>
+									<!-- Fin del divisor -->
+									<p class="mt-2" style="font-size: 13px; text-align: center;">
+										Ser la mayor de red de ayuda para las mascotas, liderando la
+										concientización del cuidado ambiental con proyecciones
+										futuras, liderando todo hecho con grupo altamente capacitado
+										con una mirada visionaria y desde un punto de vista
+										colaborativo.</p>
+
+								</div>
+							</div>
+						</div>
+				</div>
+			</section>
+			<section style="">
+				<div class="m-0" style="background-color: rgb(255, 255, 255);">
+					<small class="m-4">
+						<div class="container" id="adopcion">
+							<div class="row">
+								<div class="col-md-4" style="font-family: 'Roboto', sans-serif; margin: auto;">
+									<h2 class="mt-2 me-2" style="font-weight: bolder;">Socios
+										Estratégicos</h2>
+									<!-- Divisor -->
+									<div class="mt-2"
+										style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+									</div>
+									<!-- Fin del divisor -->
+									<p class="mt-2"
+										style="font-family: 'Roboto', sans-serif; font-size: 13px; text-align: justify;">
+										Tenemos compañias aliadas, que nos ayudaran en este proyecto.
+										<br>
+									</p>
+
+								</div>
+								<div class="col-md-4" style="margin: auto;">
+									<img style="width: 100%; height: 100%;" class="img-responsive rounded"
+										src="/bootstrap//img/Banner Productos Purina_Mesa de trabajo 1 copia (002).png"
+										alt="Honolulu" />
+								</div>
+							</div>
+						</div>
+				</div>
+			</section>
+			<!-- Fin de Sobre Nosotros -->
+		</div>
+	</div>
+	<!-- Fin de nuestra historia -->
+
+	<div th:fragment="galeria">
+		<!-- Inicio de la galeria -->
+		<div style="margin-top: -20px">
+			<div class="container-fluid">
+				<div class="px-lg-5">
+
+					<!-- For demo purpose -->
+					<div class="row py-5">
+						<div class="col-lg-12 mx-auto">
+							<div class="text-dark p-5 shadow-sm rounded banner"
+								style="text-align: center; background: radial-gradient(circle, rgba(238, 195, 205, 0.996) 44%, rgb(218, 164, 178) 72%);">
+								<h1 class="display-4">Nuestras Mascotas</h1>
+								<p class="lead">Mascotas que esperan por tí...</p>
+								<p class="text">
+									Encuentra tu Mascota, Estas esperan por tí <br> <br>
+									<a th:href="@{/app/adopcion}" class="text-reset"> ---Ir a
+										Zona de adopción---</a>.
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End -->
+
+					<div th:fragment="galeriabd" class="row" style="">
+						<div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="mascota : ${listita}">
+							<div class="bg-white rounded shadow-sm">
+								<div class="bg-white rounded shadow-sm">
+									<img th:src="@{/UploadsImg/}+${mascota.uriImagen}" class="img-responsive rounded"
+										th:alt="${mascota.uriImagen}" style="width: 100%">
+									<div class="p-4">
+										<h5 class="card-title" th:text="${mascota.nombrepets}"></h5>
+										<p class="small text-muted mb-0"
+											style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center"
+											th:text="${mascota.descripcion}">
+										</p>
+										<br>
+										<p class="small text-muted mb-0"
+											style="font-family: 'Roboto', sans-serif; font-size: 14px;"
+											th:text="${mascota.raza}">
+
+										</p>
+										<div style="background: radial-gradient(circle, rgba(238, 155, 176, 0.657) 44%, rgb(250, 176, 194) 72%);"
+											class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+											<p class="small mb-0"
+												style="margin: auto; color: rgb(33, 9, 14); font-weight: bolder; font-size: 25px; "
+												th:text="${mascota.estado}"></p>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End -->
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Fin de la Galeria -->
+	</div>
+
+	<div style="width: 100%; background-color: #FFECEF;" th:fragment="footer">
+
+		<footer style="background-color: #FFECEF;" class="text-center text-lg-start bg-white text-muted">
+			<!-- Section: Social media -->
+			<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+				<!-- Left -->
+				<div style="font-family: 'Roboto', sans-serif; font-size: 13px;" class="me-5 d-none d-lg-block">
+					<span>Tenemos el agrado de contar con su visita, le
+						brindamos las siguientes opciones:</span>
+				</div>
+				<!-- Left -->
+
+				<!-- Right -->
+				<div>
+					<p class="g-4" style="font-size: 13px;">
+						<a class="text-dark" style="text-decoration: none" th:href="@{/app/listarreg}"><strong>VER
+								REGISTRO DE ADOPCION
+							</strong></a>
+						<span> | </span>
+						<a class="text-dark" style="text-decoration: none" th:href="@{/app/listar}"><strong>VER MASCOTAS
+								BD</strong></a>
+						<span> | </span>
+						<a class="text-dark" style="text-decoration: none" th:href="@{/app/crear}"><strong>AGREGAR
+								MASCOTAS A LA
+								BD</strong></a>
+					</p>
+				</div>
+				<!-- Right -->
+			</section>
+			<!-- Section: Social media -->
+
+			<!-- Section: Links  -->
+			<section class="">
+				<div class="container text-center text-md-start mt-5">
+					<!-- Grid row -->
+					<div class="row mt-3">
+						<!-- Grid column -->
+						<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+							<!-- Content -->
+							<h3 class="text-uppercase fw-bold mb-4">
+								<i class="fas fa-gem me-3 text-secondary"></i>Huellas de Amor
+							</h3>
+
+						</div>
+						<!-- Grid column -->
+
+						<!-- Grid column -->
+						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+							<!-- Links -->
+							<h6 class="text-uppercase fw-bold mb-4">Nuesta Web</h6>
+							<p>
+								<a th:href="@{/app/home}" class="text-reset">Inicio</a>
+							</p>
+							<p>
+								<a th:href="@{/app/nosotros}" class="text-reset">Sobre
+									Nosotros</a>
+							</p>
+							<p>
+								<a th:href="@{/app/adopcion}" class="text-reset">Zona de
+									adopción</a>
+							</p>
+							<p>
+								<a th:href="@{/app/proximamente}" class="text-reset">Galeria</a>
+							</p>
+						</div>
+						<!-- Grid column -->
+
+						<!-- Grid column -->
+						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+							<!-- Links -->
+							<h6 class="">Contactanos</h6>
+							<p>
+								<i class=""></i> Jr, Jirón los
+								Mogaburos 215, Jesús María 15072
+							</p>
+							<p>
+								<i class=""></i>
+								contacto@huellasdeamor.com
+							</p>
+							<p>
+								<i class=""></i> +51 951 951
+								753
+							</p>
+							<p>
+								<i class=""></i> +51 987 123
+								654
+							</p>
+						</div>
+						<!-- Grid column -->
+
+						<!-- Grid column -->
+						<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7803.339133798193!2d-77.05284029245378!3d-12.066241242503512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9ba98290349%3A0xc7510c0c14fe5709!2sMascota.pe!5e0!3m2!1ses-419!2spe!4v1668656916757!5m2!1ses-419!2spe"
+								width="100%" height="auto" style="border: 0;" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<!-- Grid column -->
+					</div>
+					<!-- Grid row -->
+				</div>
+			</section>
+			<!-- Section: Links  -->
+			<div class="me-4"
+				style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+			</div>
+
+			<!-- Copyright -->
+			<div class="text-center text-white p-4 fs-5"
+				style="background: radial-gradient(circle, rgb(235, 180, 194), rgba(219, 121, 145, 1)); margin-bottom: -25px;">
+				© 2022 Copyright: <a class="text-reset fw-bold" href="#">Todos
+					los derechos reservados al Grupo 03</a>
+			</div>
+			<!-- Copyright -->
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+
+		</script>
+	</div>
+
+</body>
+
+</html>
