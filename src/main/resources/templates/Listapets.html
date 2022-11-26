@@ -63,10 +63,10 @@
                                             <h6>
                                                 Raza:
                                             </h6>
-                                            <p class="small text-muted mb-0"
+                                            <span class="small text-muted mb-0"
                                                 style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;"
                                                 th:text="${mascota.raza}">
-                                            </p>
+                                            </span>
                                         </div>
                                     </div>
                                     <hr>
@@ -76,8 +76,17 @@
                                                 Edad:
                                             </h6>
                                             <p class="small text-muted mb-0"
-                                                style="font-family: 'Roboto', sans-serif; font-size: 14px;  text-align: center;"
-                                                th:text="${mascota.edad}">
+                                                style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+                                                <span class="small text-muted mb-0"
+                                                    style="font-family: 'Roboto', sans-serif; font-size: 14px;  text-align: center;"
+                                                    th:text="${mascota.edad}">
+                                                </span>
+                                                <span
+                                                    style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+                                                </span>
+                                                <span th:text="${mascota.edadtipo}"
+                                                    style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+                                                </span>
                                             </p>
                                         </div>
                                         <div class="col-6">

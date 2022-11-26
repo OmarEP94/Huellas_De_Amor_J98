@@ -23,6 +23,8 @@ public class Mascota {
 	@NotEmpty(message = "Ingrese la edad de la mascota")
 	private String edad;
 
+	private String edadtipo;
+
 	private String fecha;
 
 	@NotEmpty(message = "Ingrese la raza")
@@ -108,6 +110,14 @@ public class Mascota {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getEdadtipo() {
+		return edadtipo;
+	}
+
+	public void setEdadtipo(String edadtipo) {
+		this.edadtipo = edadtipo;
 	}
 
 }

@@ -37,11 +37,13 @@
                         <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('fechanac')}"  th:errors="*{fechanac}" ></div>
                     </div>
                     <div class="col-md-6">
-                        <label for="estado" class="form-label">Estado</label>
-                        <input type="text" class="form-control" id="estado"
-                            placeholder="Ingrese su estado (Apto o No Apto)"  th:field="*{estado}"/>
-                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('estado')}"  th:errors="*{estado}" ></div>
-                    </div>     
+                        <label for="estado" class="form-label">Estado:</label>
+                        <select class="form-select" aria-label="Default select example" th:field="*{estado}">
+                            <option th:value="${'Seleccione una opción'}" selected> Seleccione una opción</option>
+                            <option th:value="${'Apto'}" >Apto</option>
+                            <option th:value="${'No Apto'}" >No Apto</option>
+                        </select>
+                    </div>   
                     <div class="col-md-12">
                         <label for="direccion" class="form-label">Direccion:</label> <input type="text" class="form-control" id="direccion"
                             placeholder="Ingrese su direccion actual" th:field="*{direccion}"/>

@@ -392,11 +392,30 @@
 											th:text="${mascota.descripcion}">
 										</p>
 										<br>
-										<p class="small text-muted mb-0"
-											style="font-family: 'Roboto', sans-serif; font-size: 14px;"
-											th:text="${mascota.raza}">
+										<div class="row">
+											<div class="col-md-6">
+												<p class="small text-muted mb-0"
+													style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center"
+													th:text="${mascota.raza}">
 
-										</p>
+												</p>
+											</div>
+											<div class="col-md-6">
+												<p class="small text-muted mb-0"
+													style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+													<span class="small text-muted mb-0"
+														style="font-family: 'Roboto', sans-serif; font-size: 14px;  text-align: center;"
+														th:text="${mascota.edad}">
+													</span>
+													<span
+														style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+													</span>
+													<span th:text="${mascota.edadtipo}"
+														style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;">
+													</span>
+												</p>
+											</div>
+										</div>
 										<div style="background: radial-gradient(circle, rgba(238, 155, 176, 0.657) 44%, rgb(250, 176, 194) 72%);"
 											class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
 											<p class="small mb-0"
