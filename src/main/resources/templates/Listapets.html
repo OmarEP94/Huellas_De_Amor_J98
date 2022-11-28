@@ -30,12 +30,13 @@
                 </div>
                 <!-- End -->
 
-                <div th:fragment="galeriabd" class="row">
+                <div th:fragment="galeriabd" class="row rounded">
                     <!-- Gallery item -->
-                    <div class="col-xl-3 col-lg-6 col-md-6 mb-4" th:each="mascota : ${listita}">
-                        <div class="bg-white rounded shadow-sm">
-                            <div class="bg-white rounded shadow-sm">
-                                <img th:src="@{/UploadsImg/}+${mascota.uriImagen}" class="p-2 img-responsive rounded-10"
+                    <div class="col-xl-3 col-lg-6 col-md-6 mb-4 rounded" th:each="mascota : ${listita}">
+                        <div class="bg-white rounded shadow">
+                            <div class="shadow"
+                                style="background: radial-gradient(circle, rgba(247, 232, 235, 0.996) 44%, rgb(243, 235, 237) 72%);">
+                                <img th:src=" @{/UploadsImg/}+${mascota.uriImagen}" class="img-responsive rounded"
                                     th:alt="${mascota.uriImagen}" style="width: 100%">
 
                                 <div class="p-4">
@@ -63,10 +64,10 @@
                                             <h6>
                                                 Raza:
                                             </h6>
-                                            <span class="small text-muted mb-0"
+                                            <p class="small text-muted mb-0"
                                                 style="font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;"
                                                 th:text="${mascota.raza}">
-                                            </span>
+                                            </p>
                                         </div>
                                     </div>
                                     <hr>
@@ -140,7 +141,7 @@
 
                                             <a th:href="@{/app/Elimnar/}+${mascota.idMascota}"
                                                 class="col-4 text-white btn"
-                                                style="background-color: #6f2a2a"><strong>Eliminar</strong></a>
+                                                style="background-color: #d66594"><strong>Eliminar</strong></a>
                                         </div>
                                     </div>
                                 </div>

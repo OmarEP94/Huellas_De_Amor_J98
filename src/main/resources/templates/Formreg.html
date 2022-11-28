@@ -11,15 +11,19 @@
         <h1 class="" style="text-align: center;">Formulario de Registro</h1>
         <div class="p-5">
             <div class="container">
-                <form th:action="@{/app/formreg}" th:object="${registro}" class="row g-4" method="post"
-                    enctype="multipart/form-data">
+                <form th:action="@{/app/formreg}" th:object="${registro}" class="row g-4" method="post">
                     <h4>Complete el formulario de adopción:</h4>
                     <div class="col-12">
-                        <label for="nomape" class="form-label">Nombres y apellidos</label>
+                        <label for="nomape" class="form-label">Nombres y apellidos:</label>
                         <input name="nomape" type="text" class="form-control" id="nomape"
                             placeholder="Ingrese sus nombre y apellidos" th:field="*{nomape}" />
                         <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomape')}"  th:errors="*{nomape}" ></div>
-
+                    </div>
+                    <div class="col-12">
+                        <label for="correo" class="form-label">Correo Electronico:</label>
+                        <input name="correo" type="text" class="form-control" id="correo"
+                            placeholder="Ingrese su correo electronico" th:field="*{correo}" />
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('correo')}"  th:errors="*{correo}" ></div>
                     </div>
                     <div class="col-md-6">
                         <label for="dni" class="form-label">DNI:</label> <input type="number" class="form-control" id="dni"
@@ -33,7 +37,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="fechanac" class="form-label">Fecha de
-                            Nacimiento</label> <input type="date" class="form-control" id="fechanac"  th:field="*{fechanac}"/>
+                            Nacimiento:</label> <input type="date" class="form-control" id="fechanac"  th:field="*{fechanac}"/>
                         <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('fechanac')}"  th:errors="*{fechanac}" ></div>
                     </div>
                     <div class="col-md-6">

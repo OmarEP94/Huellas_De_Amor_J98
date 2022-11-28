@@ -45,9 +45,6 @@ public class Registro {
     @NotEmpty(message = "Ingrese el nombre de la mascota de su preferencia")
     private String nompets;
 
-    @NotEmpty(message = "Seleccione si esta conforme toda la informacion")
-    private String check;
-
     public int getIdRegistro() {
         return idRegistro;
     }
@@ -126,14 +123,6 @@ public class Registro {
 
     public void setNompets(String nompets) {
         this.nompets = nompets;
-    }
-
-    public String getCheck() {
-        return check;
-    }
-
-    public void setCheck(String check) {
-        this.check = check;
     }
 
 }

@@ -22,7 +22,7 @@ import com.certus.spring.service.IRegistroService;
 */
 @Controller
 @RequestMapping("/app")
-@SessionAttributes({ "mascota", "registro" })
+@SessionAttributes({})
 public class HomeController {
 
 	@Value("${title.generic}")
@@ -117,6 +117,16 @@ public class HomeController {
 		model.addAttribute("TituloSN", "Se muestran a todos los integrantes del Grupo 03");
 
 		return "SobreNosotros";
+	}
+
+	@GetMapping({ "/integrantes" })
+	public String Integrantes(Model model) {
+
+		model.addAttribute("TituloPagina", "HUELLAS DE AMOR | SOBRE NOSOTROS ");
+		model.addAttribute("titulo", "HUELLAS DE AMOR");
+		model.addAttribute("tituloSN", "Se muestran a todos los integrantes del Grupo 03");
+
+		return "Integrantes";
 	}
 
 }
