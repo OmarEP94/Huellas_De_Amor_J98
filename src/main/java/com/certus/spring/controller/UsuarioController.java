@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.certus.spring.models.Registro;
+import com.certus.spring.models.Usuario;
 import com.certus.spring.models.Response;
-import com.certus.spring.service.IRegistroService;
+import com.certus.spring.service.IUsuarioService;
 
 @Controller
-@RequestMapping({ "/app", "/" })
-@SessionAttributes("registro")
+@RequestMapping("/app")
+@SessionAttributes("usuario")
 
-public class RegistroController {
+public class UsuarioController {
 
     @Value("${title.generic}")
     private String titlePage;
@@ -32,20 +32,20 @@ public class RegistroController {
     private String mensaje;
 
     @Autowired
-    @Qualifier("servicio2")
-    private IRegistroService InterfaceRegistro1;
+    @Qualifier("servicio3")
+    private IUsuarioService InterfaceUsuario;
 
-    @GetMapping({ "/listarreg" })
-    public String ListarRegistros(Model model) {
+    @GetMapping({ "/listarusu" })
+    public String ListarUsuarios(Model model) {
 
         model.addAttribute("TituloPagina", titlePage);
         model.addAttribute("titulo", "Sección J98");
-        Response<Registro> rspta = InterfaceRegistro1.listarRegistro();
+        Response<Usuario> rspta = InterfaceUsuario.listarUsuario();
 
         if (rspta.getEstado()) {
             model.addAttribute("Mensaje", rspta.getMensaje());
             model.addAttribute("listita", rspta.getListData());
-            return "Listareg";
+            return "ListaUsuario";
         } else {
             model.addAttribute("mensaje", rspta.getMensaje());
             model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -53,38 +53,38 @@ public class RegistroController {
         }
     }
 
-    @GetMapping("/crearreg")
-    public String CrearRegistro(Model model) {
-        Registro registro = new Registro();
+    @GetMapping("/crearusu")
+    public String CrearUsuario(Model model) {
+        Usuario usuario = new Usuario();
 
         model.addAttribute("TituloPagina", titlePage);
-        model.addAttribute("titulo", "Sección J98 - Crear Registro");
-        model.addAttribute("registro", registro);
+        model.addAttribute("titulo", "Sección J98 - Crear Usuario");
+        model.addAttribute("usuario", usuario);
 
-        return "Formreg";
+        return "Registro";
     }
 
-    @GetMapping("/Editarreg/{idRegistro}")
-    public String EditarRegistro(@PathVariable int idRegistro, Model model) {
+    @GetMapping("/Editarusu/{idUsuario}")
+    public String EditarUsuario(@PathVariable int idUsuario, Model model) {
 
         model.addAttribute("TituloPagina", titlePage);
 
-        Response<Registro> rspta = InterfaceRegistro1.editarRegistro(idRegistro);
+        Response<Usuario> rspta = InterfaceUsuario.editarUsuario(idUsuario);
 
-        model.addAttribute("titulo", "Sección J98 - Editando el Registro");
+        model.addAttribute("titulo", "Sección J98 - Editando el Usuario");
 
-        model.addAttribute("registro", rspta.getData());
+        model.addAttribute("usuario", rspta.getData());
 
-        return "Formreg";
+        return "Registro";
     }
 
-    @GetMapping("/Elimnarreg/{idRegistro}")
-    public String ElimnarRegistro(@PathVariable int idRegistro, Model model) {
+    @GetMapping("/Elimnarusu/{idUsuario}")
+    public String ElimnarUsuario(@PathVariable int idUsuario, Model model) {
 
-        Response<Registro> rspta = InterfaceRegistro1.eliminarRegistro(idRegistro);
+        Response<Usuario> rspta = InterfaceUsuario.eliminarUsuario(idUsuario);
 
         if (rspta.getEstado()) {
-            return "redirect:/app/listarreg";
+            return "redirect:/app/listarusu";
         } else {
             model.addAttribute("mensaje", rspta.getMensaje());
             model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -93,19 +93,19 @@ public class RegistroController {
         }
     }
 
-    @PostMapping("/formreg")
-    public String creaRegistro(@Valid Registro Luffy, BindingResult result, Model model, SessionStatus sStatus) {
+    @PostMapping("/formusu")
+    public String creaUsuario(@Valid Usuario Luffy, BindingResult result, Model model, SessionStatus sStatus) {
 
         if (result.hasErrors()) {
-            return "Formreg";
+            return "Registro";
         }
 
-        Response<Registro> rspta = InterfaceRegistro1.crearRegistro(Luffy);
+        Response<Usuario> rspta = InterfaceUsuario.crearUsuario(Luffy);
 
         if (rspta.getEstado()) {
 
             sStatus.setComplete();
-            return "redirect:/app/home";
+            return "redirect:/app/login";
 
         } else {
             model.addAttribute("mensaje", rspta.getMensaje());
@@ -114,4 +114,5 @@ public class RegistroController {
         }
 
     }
+
 }

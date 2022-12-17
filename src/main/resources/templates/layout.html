@@ -17,15 +17,16 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<!-- Icono de la web -->
+	<link rel="icon" href="/bootstrap/img/Imagen1.png">
+
+	<!-- Chat Bot -->
 	<script async>
 		(function (w, d) {
 			var h = d.head || d.getElementsByTagName("head")[0];
 			var s = d.createElement("script");
 			s.setAttribute("type", "text/javascript");
-			s
-				.setAttribute(
-					"src",
-					"https://app.bluecaribu.com/conversion/integration/b6c92aaca57a27b4edd21850d6362ebf");
+			s.setAttribute("src", "https://app.bluecaribu.com/conversion/integration/b6c92aaca57a27b4edd21850d6362ebf");
 			h.appendChild(s);
 		})(window, document);
 	</script>
@@ -39,7 +40,11 @@
 		<nav class="colornav navbar navbar-expand-lg"
 			style="background: radial-gradient(circle, rgb(237, 155, 175) 44%, rgba(219, 121, 145, 1) 72%)">
 			<div class="container">
-				<a th:href="@{/app/home}" class="navbar-brand fs-4 fw-bold text-white">HUELLAS DE AMOR</a>
+				<a class="navbar-brand fs-4 fw-bold text-white" th:href="@{/app/home}">
+					<img th:src="@{'/bootstrap/img/Imagen1.png'}" alt="Logo" width="35" height="33"
+						class="d-inline-block align-text-top">
+					<strong class="">Huellas de Amor</strong>
+				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -55,10 +60,10 @@
 								adopción</a></li>
 						<li class="nav-item"><a class="nav-link text-white" th:href="@{/app/contacto}">Contacto</a></li>
 					</ul>
-					<form class="d-flex gap-2 col-4 mx-auto" role="search">
+					<form class="d-flex gap-2 col-lg-4 mx-auto" role="search">
 						<input class="form-control me-4 bg-light bg-opacity-50" type="search" placeholder="Busque aquí"
 							aria-label="Search" />
-						<div class="d-grid gap-2 col-4 mx-auto">
+						<div class="d-grid gap-2 mx-auto">
 							<button class="btn text-white fw-bold bg-dark bg-opacity-50" type="submit">Buscar</button>
 						</div>
 					</form>
@@ -72,15 +77,32 @@
 										d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
 								</svg>
 							</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu text-center">
+								<div class="text-center">
+									<h6 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h6>
+									<div th:fragment="divisor" class="mt-0 mb-0"
+										style="background: radial-gradient(circle, rgba(194, 78, 107, 0.657) 44%, rgb(207, 100, 127) 72%); margin: auto; width: 100%; height: 3px">
+									</div>
+								</div>
+
 								<li><a class="dropdown-item" th:href="@{/app/login}">Inicie
 										Sesión</a></li>
 
 								<li>
 									<hr class="dropdown-divider" />
 								</li>
-								<li><a class="dropdown-item" th:href="@{/app/registro}">Crear
+								<li><a class="dropdown-item" th:href="@{/app/crearusu}">Crear
 										Cuenta</a></li>
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+								<form th:action="@{/logout}" method="post"><button class="btn"
+										th:href="@{/logout}">Cerrar
+										Sesión</button>
+								</form>
+								<!-- <form class="btn" style="" th:action="@{/logout}" method="post">
+									<input type="submit" value="Cerrar Sesion" />
+								</form> -->
 
 							</ul>
 						</li>
@@ -108,7 +130,7 @@
 					<div class="carousel-caption d-none d-md-block">
 						<h1 class="fs-1 text-white" style="text-shadow: 0 0 10px rgb(51, 16, 39)"
 							th:text="${TituloPagina}"></h1>
-						<p class="fs-3" style="text-shadow: 0 0 10px rgb(51, 16, 39)">No
+						<p class="fs-3" style="text-shadow: 0 0 10px rgb(23, 74, 244); ">No
 							seas complice del tráfico de animales...</p>
 					</div>
 				</div>
@@ -344,7 +366,7 @@
 								</div>
 								<div class="col-md-4" style="margin: auto;">
 									<img style="width: 100%; height: 100%;" class="img-responsive rounded"
-										src="/bootstrap//img/Banner Productos Purina_Mesa de trabajo 1 copia (002).png"
+										src="/bootstrap/img/Banner Productos Purina_Mesa de trabajo 1 copia (002).png"
 										alt="Honolulu" />
 								</div>
 							</div>
@@ -562,7 +584,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
 
-		</script>
+			</script>
 	</div>
 
 </body>

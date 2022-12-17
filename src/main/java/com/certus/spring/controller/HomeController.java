@@ -21,7 +21,7 @@ import com.certus.spring.models.Registro;
 import com.certus.spring.service.IRegistroService;
 */
 @Controller
-@RequestMapping("/app")
+@RequestMapping({ "/app", "/" })
 @SessionAttributes({})
 public class HomeController {
 
@@ -36,11 +36,6 @@ public class HomeController {
 	private IMascotaService InterfaceMascota1;
 
 	@GetMapping({ "/home", "/inicio", "/", "/Home", "/Inicio" })
-
-	// model.addAttribute("TituloPagina", titlePage);
-	// model.addAttribute("titulo", "Sección J98");
-	// model.addAttribute("Mensaje", mensaje);
-
 	public String Home(Model model) {
 
 		model.addAttribute("TituloPagina", titlePage);
@@ -50,22 +45,13 @@ public class HomeController {
 		if (rspta.getEstado()) {
 			model.addAttribute("Mensaje", rspta.getMensaje());
 			model.addAttribute("listita", rspta.getListData());
-			return "home";
+			return "Home";
 		} else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
 			return "errores";
 		}
 
-	}
-
-	@GetMapping({ "/proximamente" })
-	public String Construccion(Model model) {
-		model.addAttribute("TituloPagina", titlePage);
-		model.addAttribute("titulo", "Sección J98");
-		model.addAttribute("Mensaje", mensaje);
-
-		return "proximamente";
 	}
 
 	@GetMapping({ "/adopcion" })
@@ -77,7 +63,7 @@ public class HomeController {
 		if (rspta.getEstado()) {
 			model.addAttribute("Mensaje", rspta.getMensaje());
 			model.addAttribute("listita", rspta.getListData());
-			return "adopcion";
+			return "Adopcion";
 		} else {
 			model.addAttribute("mensaje", rspta.getMensaje());
 			model.addAttribute("mensajeError", rspta.getMensajeError());
@@ -87,10 +73,8 @@ public class HomeController {
 
 	@GetMapping({ "/login" })
 	public String Login(Model model) {
-		model.addAttribute("TituloPagina", "Inicia Sesión");
-		model.addAttribute("titulo", "Iniciar Sesión");
 
-		return "login";
+		return "Login";
 	}
 
 	@GetMapping({ "/registro" })
@@ -98,7 +82,7 @@ public class HomeController {
 		model.addAttribute("TituloPagina", "Inicia Sesión");
 		model.addAttribute("titulo", "Iniciar Sesión");
 
-		return "registro";
+		return "Registro";
 	}
 
 	@GetMapping({ "/contacto" })

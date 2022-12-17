@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 public class Registro {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRegistro;
 
