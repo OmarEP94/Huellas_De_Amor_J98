@@ -14,7 +14,7 @@
 		justify-content: center; height: 100vh;
 	   display: flex">
             <div class="container">
-                <div class="g-0 position-relative" style="height: 80vh; width: 100%; margin: auto; border-radius: 300px; margin-bottom: -
+                <div class="g-0 position-relative" style="height: 80vh; width: 100%; margin: auto; border-radius: 400px; margin-bottom: -
 				vh; background: radial-gradient(circle, rgba(225, 165, 179, 0.996) 44%, rgb(188, 121, 139) 72%);">
                     <h2 class="p-4 text-white" style="text-align: center; margin:auto;">HUELLAS DE AMOR</h2>
                 </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-6 p-4 ps-md-0" style="margin: auto;">
                             <div class="ms-5" style="margin: auto">
-                                <h2 class="me-4 mb-4" style="text-align: center;">Registro de Usuario</h2>
+                                <h3 class="me-4 mb-4" style="text-align: center;">Registro de Usuario</h3>
                                 <form class="g-4 me-4" style="margin: auto;" th:action="@{/app/formusu}"
                                     th:object="${usuario}" method="post">
                                     <h5 class="me-4">Complete el formulario de registro:</h5>
@@ -85,7 +85,7 @@
                                             th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
                                     </div>
 
-                                    <div class="me-4 mb-4 mt-3" style="margin: auto; text-align:center;">
+                                    <div class="me-4 mb-2 mt-3" style="margin: auto; text-align:center;">
                                         <button type="submit" class="btn center w-50" style="
                                       background-color: rgb(207, 100, 127);
                                       color: white;
