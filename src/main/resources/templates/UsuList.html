@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="/layout :: head">
+
+</head>
+
+<body style="background-color: rgb(248, 240, 250);">
+    <!-- Barra de Navegacion -->
+    <div th:replace="/layout :: header"></div>
+
+    <!-- Lista de usuarioes -->
+
+    <div class="mt-5">
+        <div class="">
+            <div class="px-lg-5">
+                <div class="container">
+                    <div style="text-align: center;">
+                        <h2 th:text="${Titulo}"></h2>
+                    </div>
+                    <hr>
+                    <div>
+                        <div>
+                            <table class="table table-responsive table-sm table-md table-light mt-4 mb-4 shadow p-5">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h3 class="">Se muestran nuestras usuarios.
+                                        </h3>
+                                    </div>
+                                    <div class="col-4">
+                                        <p><a th:href="@{/app/crearusu}"
+                                                class="col-12 btn btn-success p-2"><strong>Agregar
+                                                    Usuarios</strong></a></p>
+                                    </div>
+                                </div>
+
+                                <thead class="text-dark" style="text-align:left">
+                                    <tr class="text-dark">
+                                        <th>Id usuario</th>
+                                        <th>Nombre y apellidos</th>
+                                        <th>Usuario</th>
+                                        <th>Contraseña</th>
+                                        <th>Sucursal</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-striped" th:each="usuario : ${listita}">
+                                    <tr style="text-align:left">
+                                        <td th:text="${usuario.idUsuario}"></td>
+                                        <td th:text="${usuario.nomape}"></td>
+                                        <td th:text="${usuario.usuariox}"></td>
+                                        <td>*********</td>
+                                        <td th:text="${usuario.sucursal}"></td>
+                                        <td><a th:href="@{/app/Editarusu/}+${usuario.idUsuario}"
+                                                class="text-white col-4 btn p-1"
+                                                style="background-color: #12af5b"><strong>Editar</strong></a>
+                                            <a th:href="@{/app/Eliminarusu/}+${usuario.idUsuario}"
+                                                class="text-white col-4 btn p-1"
+                                                style="background-color: #261619"><strong>Eliminar</strong></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div th:replace="/layout :: footer">
+    </div>
+
+
+</body>
+<!-- Barra de Navegacion -->
+<div th:replace="/layout :: scriptboots">
+</div>
+
+</html>

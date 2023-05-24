@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="/layout :: head">
+</head>
+
+<body style="background-color: rgb(248, 240, 250);">
+    <!-- Barra de Navegacion -->
+    <div th:replace="/layout :: header">
+    </div>
+    <!-- FORM SUCURSAL -->
+    <div class="container">
+        <div>
+            <form class="mt-5 card" th:action="@{/app/formsucu}" th:object="${sucursal}" method="post">
+                <div class="card-body p-5">
+                    <div>
+                        <h2 class="mb-4" th:text="${Titulo}" style="text-align: center;"><strong></strong></h2>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="identi" class="form-label">Indentidad</label>
+                        <input type="number" class="form-control" id="identi" name="identi" th:field="*{identi}"
+                            placeholder="Agregue un número de 0 - 99">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('identi')}"
+                            th:errors="*{identi}"></div>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Nombre de la Sucursal</label>
+                        <input type="text" class="form-control" id="sucur" name="sucur"
+                            placeholder="Agregue el nombre de la sucursal" th:field="*{sucur}">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('sucur')}"
+                            th:errors="*{sucur}"></div>
+                    </div>
+                    <div class="mb-5 ms-2 me-2 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">Verifique los datos</label>
+                    </div>
+                    <p class="text-white" style="text-align: center;">
+                        <button style="background-color:rgb(27, 14, 15);" type="submit" class="text-white btn w-50"
+                            th:text="${Btn}"></button>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div th:replace="/layout :: footer">
+    </div>
+  
+  
+  </body>
+  <!-- Barra de Navegacion -->
+  <div th:replace="/layout :: scriptboots">
+  </div>
+  
+  </html>

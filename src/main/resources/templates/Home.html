@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head th:replace="/layout :: head"></head>
-<body>
-	
-	<header th:replace="/layout :: header"></header>
-	<div th:replace="/layout :: divisor"></div>
-	<div th:replace="/layout :: slider"></div>
-	<div th:replace="/layout :: nuestrahistoria"></div>
-	<div th:replace="/layout :: divisor"></div>
-	<div th:replace="/layout :: galeria"></div>
-	<div th:replace="/layout :: divisor"></div>
-	<footer th:replace="/layout :: footer"></footer>
+
+<head th:replace="/layout :: head">
+
+</head>
+
+<body style="background-color: rgb(248, 240, 250);">
+    <!-- Barra de Navegacion -->
+    <div th:replace="/layout :: header">
+    </div>
+    <!-- Crud Practica -->
+    <div class="container ">
+        <h1 class="mt-4 mx-auto" style="text-align: center;"><strong th:text="${Titulo}"></strong></h1>
+        <div class="mt-4 row">
+
+            <div class="col-lg-6 col-md-6 col-sm-12 p-4">
+                <div class="card p-4" style="height: 100%; border-radius: 45px;">
+                    <p style="text-align: center;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/196/196745.png" class="card-img-top w-50 p-4"
+                            alt="...">
+                    </p>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="text-align: center;">Lista de Usuarios</h5>
+                        <p class="card-text">Aqui se muestran nuestros usuarios registrados en nuestros sistema</p>
+                        <div class="mt-4" style="text-align: center;">
+                            <a th:href="@{/app/listarusu}"
+                                class="col-4 btn btn-danger me-2 ms-2 p-2 text-white"><strong>Ver
+                                    Usuarios</strong></a>
+
+
+                            <a th:href="@{/app/crearusu}" class="col-4 btn btn-success me-2 ms-2 p-2"><strong>Agregar
+                                    Usuarios</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 p-4">
+                <div class="card p-4" style="height: 100%; border-radius: 45px;">
+                    <p style="text-align: center;">
+                        <img src="https://png.pngtree.com/png-vector/20191118/ourlarge/pngtree-location-icon-creative-design-template-png-image_1998518.jpg"
+                            class="card-img-top w-50" alt="...">
+                    </p>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="text-align: center;">Nuestras Sucursales</h5>
+                        <p class="card-text">Aqui se muestran nuestros sucursales registradas en nuestros sistema</p>
+                        <div class="mt-4" style="text-align: center;">
+                            <a th:href="@{/app/listarsucu}"
+                                class="col-4 btn btn-danger me-2 ms-2 p-2 text-white"><strong>Ver
+                                    Sucursales</strong></a>
+
+
+                            <a th:href="@{/app/crearsucu}" class="col-4 btn btn-success me-2 ms-2 p-2"><strong>Agregar
+                                    Sucursales</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div th:replace="/layout :: footer">
+    </div>
+
+
 </body>
+<!-- Barra de Navegacion -->
+<div th:replace="/layout :: scriptboots">
+</div>
+
 </html>

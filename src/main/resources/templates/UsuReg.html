@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="/layout :: head">
+</head>
+
+<body style="background-color: rgb(201, 193, 193);">
+
+    <div th:replace="/layout :: header">
+    </div>
+
+    <div class="container">
+        <div>
+            <form class="mt-5 card" th:action="@{/app/formusu}" th:object="${usuario}" method="post">
+                <div class="card-body p-5">
+                    <div>
+                        <h2 class="mb-4" th:text="${Titulo}" style="text-align: center;"><strong></strong></h2>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Nombre del Usuario</label>
+                        <input type="text" class="form-control" id="sucur" name="sucur" placeholder="Agregue sus datos"
+                            th:field="*{nomape}">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomape')}"
+                            th:errors="*{nomape}"></div>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="sucur" name="sucur"
+                            placeholder="Agregue su correo electronico" th:field="*{usuariox}">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('usuariox')}"
+                            th:errors="*{usuariox}"></div>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="sucur" name="sucur"
+                            placeholder="Agregue su contraseña" th:field="*{contrasena}">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('contrasena')}"
+                            th:errors="*{contrasena}"></div>
+                    </div>
+                    <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Sucursal</label>
+                        <select class="form-select" th:field="*{sucursal}">
+                            <option value=""> Seleccione una sucursal </option>
+                            <option th:each="sucursal: ${sucursal}"
+                               th:value="${sucursal.sucur}"
+                               th:utext="${sucursal.sucur}"></option>
+                        </select>
+                    </div>
+                    <!-- <div class="mb-3 ms-2 me-2">
+                        <label for="sucur" class="form-label">Sucursal</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                    </div> -->
+                    <div class="mb-5 ms-2 me-2 form-check mt-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">Verifique los datos</label>
+                    </div>
+                    <p class="text-white" style="text-align: center;">
+                        <button style="background-color:rgb(37, 24, 73);" type="submit" class="text-white btn w-50"
+                            th:text="${Btn}"></button>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+<!-- Scritp Boostrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+</script>
+
+</html> 
